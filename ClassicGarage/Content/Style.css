@@ -1,0 +1,32 @@
+.jumbotron{
+	background-image: url("zdj/obrazek1.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 50vh;
+}
+
+a{
+	color: white;
+}
+
+.navbar-inverse {
+    background-color: #375a7f;
+}
+
+.navbar-inverse .navbar-nav > li:hover, .navbar-inverse .navbar-nav > li:focus {
+
+    background-color: #303030;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    color: #375a7f;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    color: #303030;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    font-size: 16px;
+}

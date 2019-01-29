@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ClassicGarage.Models.PartModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<p>
+    @Html.ActionLink("Dodaj", "Create", "PartModels", new object { }, new { @class = "btn btn-default" })
+</p> 
+<table class="table auta">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Repair.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CatalogNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Repair.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CatalogNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchaseAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesDate)
+        </td>
+        <td>
+            @using (Html.BeginForm(FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("id", item.ID)
+
+                <input type="submit" value="Edytuj" formaction=@Url.Action("EditPart","PartModels") />
+                <input type="submit" value="Szczegóły" formaction=@Url.Action("Details","PartModels") />
+                <input type="submit" value="Usuń" formaction=@Url.Action("DeletePart","PartModels") />
+
+            }
+            </td>
+    </tr>
+}
+
+</table>

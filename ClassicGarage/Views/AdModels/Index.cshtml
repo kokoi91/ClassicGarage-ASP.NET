@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ClassicGarage.Models.AdModels>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Index";
+}
+
+ @if ((int)Session["UserId"] != 0)
+                {
+<p>
+    @Html.ActionLink("Dodaj", "Create", "AdModels", new object { }, new { @class = "btn btn-default" })
+</p>
+                }
+
+<table class="table auta">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Car.Make)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.Picture)
+        </th>
+
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Make)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Year)
+            </td>
+            <td>
+
+                <img src="@Url.Content(item.Car.Picture)" style="height: 100px; width: 100px;" />
+            </td>
+
+
+
+
+            <td>
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("id", item.ID)
+
+
+                    <input type="submit" value="Szczegóły" formaction=@Url.Action("Details","AdModels") />
+                    if ((int)Session["UserId"] == item.Car.OwnerID)
+                    {
+                        <br />
+                        <input type="submit" value="Usuń ogłoszenie"formaction=@Url.Action("DeleteAd","AdModels") />
+                    }
+                }
+            </td>
+        </tr>
+    }
+
+</table>

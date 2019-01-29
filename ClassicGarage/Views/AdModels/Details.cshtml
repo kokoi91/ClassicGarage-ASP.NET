@@ -1,0 +1,56 @@
+﻿@model ClassicGarage.Models.AdModels
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div>
+    <h4>
+        <div class="row">
+            <div>
+                <img src="@Url.Content(Model.Car.Picture)" style="height: 250px; width: 250px;" />
+            </div>
+       
+            <div>
+                <p>  @Html.DisplayFor(model => model.des)</p>
+            </div>
+        </div>
+            <hr />
+            <dl class="dl-horizontal">
+                <div>
+                   <b> Imie</b>
+                    <p>
+                        @Html.DisplayFor(model => model.Car.Owner.FirstName)
+                    </p>
+                    <b>
+                        Telefon
+                    </b>
+                        <p>
+                            @Html.DisplayFor(model => model.Car.Owner.PhoneNo)
+                        </p>
+                        <b>
+                            Marka
+                        </b>
+                            <p>
+                                @Html.DisplayFor(model => model.Car.Make)
+                            </p>
+                            <b> Rok</b>
+                            <p>
+                                @Html.DisplayFor(model => model.Car.Year)
+                            </p>
+                            <b> Vin</b>
+                            <p>
+                                @Html.DisplayFor(model => model.Car.VIN)
+                            </p>
+                            
+
+
+
+</div>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("<-", "Index", "AdModels", new object { }, new { @class = "btn btn-default" })
+        </p>

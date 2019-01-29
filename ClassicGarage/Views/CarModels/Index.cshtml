@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ClassicGarage.Models.CarModels>
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<p>
+    @Html.ActionLink("Dodaj", "Create", "CarModels", new object { }, new { @class = "btn btn-default" })
+</p>
+<table class="table auta">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Make)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VIN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseAmount)
+        </th>
+        <th></th>
+    </tr>
+    @{Int32 i = 1;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Make)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            @if (item.Picture != null)
+            {
+                <td>
+                    <img src="@Url.Content(item.Picture)" style="height: 100px; width: 100px;" />
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseDate, "{0:dd/MM/yyyy}")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseAmount)
+            </td>
+            <td>
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("id", item.Id)
+
+                    <input type="submit" value="Edytuj" formaction=@Url.Action("EditCar", "CarModels") />
+                    <input type="submit" value="Szczegóły" formaction=@Url.Action("Details", "CarModels") />
+                    <input type="submit" value="Usuń" formaction=@Url.Action("DeleteCar", "CarModels") />
+                }
+            </td>
+        </tr>
+
+        i++;
+
+    }
+</table>

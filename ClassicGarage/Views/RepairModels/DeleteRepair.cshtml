@@ -1,0 +1,20 @@
+﻿@model ClassicGarage.Models.RepairModels
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div>
+    Czy chcesz usunąć  <b>@Html.DisplayFor(model => model.Name)</b>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.Hidden("id", Model.Id)
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" formaction=@Url.Action("DeleteConfirmed","RepairModels") />
+            @Html.ActionLink("NIE", "Index", "RepairModels", new object { }, new { @class = "btn btn-default" })
+
+        </div>
+    }
+</div>

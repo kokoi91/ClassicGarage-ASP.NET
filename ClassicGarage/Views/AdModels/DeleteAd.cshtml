@@ -1,0 +1,18 @@
+﻿@model ClassicGarage.Models.AdModels
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div>
+    Czy chcesz usunąć  <b>ogłoszenie</b>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("id", Model.ID)
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" formaction=@Url.Action("DeleteConfirmed","AdModels") />
+            @Html.ActionLink("<-", "Index", "AdModels", new object { }, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

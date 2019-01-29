@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ClassicGarage.Models.RepairModels>
+@using Microsoft.AspNet.Identity
+
+
+@{
+    ViewBag.Title = "Strona główna";
+}
+<div class="jumbotron">
+    <h1 style="color:white;">  CLASSIC GARAGE</h1>
+    <p style="color:white;" class="lead">_________________________________________________</p>
+</div>
+
+</div>
+
+<div class="container body-content">
+    <div class="row">
+        <div class="col-md-4">
+            <p><a class="btn btn-default" href="http://localhost:60119/AdModels">Ogłoszenia &raquo;</a></p>
+        </div>
+    </div>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-4">
+                <p><a class="btn btn-default" href="http://localhost:60119/CarModels">Samochody &raquo;</a></p>
+            </div>
+
+            <div class="col-md-4">
+                <p><a class="btn btn-default" href="http://localhost:60119/RepairModels">Naprawy &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <p><a class="btn btn-default" href="http://localhost:60119/PartModels">Części &raquo;</a></p>
+            </div>
+        </div>
+        </div>
+        }

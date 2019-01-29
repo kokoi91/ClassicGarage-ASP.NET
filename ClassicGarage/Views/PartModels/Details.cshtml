@@ -1,0 +1,80 @@
+﻿@model ClassicGarage.Models.PartModels
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <b>
+            Nazwa naprawy
+        </b>
+
+        <p>
+            @Html.DisplayFor(model => model.Repair.Name)
+        </p>
+
+        <b>
+            Nazwa części
+        </b>
+
+        <p>
+            @Html.DisplayFor(model => model.Name)
+        </p>
+
+        <b>
+            Numer katalogowy
+        </b>
+
+        <p>
+            @Html.DisplayFor(model => model.CatalogNumber)
+        </p>
+
+        <b>
+            Cena zakupu
+        </b>
+
+        <p>
+            @Html.DisplayFor(model => model.PurchaseAmount)
+        </p>
+
+        <b>
+            Data zakupu
+        </b>
+
+        <p>
+            @Html.DisplayFor(model => model.PurchaseDate)
+        </p>
+
+        <b>
+            Cena sprzedaży
+        </b>
+
+        <p>
+            @Html.DisplayFor(model => model.SalesAmount)
+        </p>
+
+        <b>
+            Data sprzedaży
+        </b>
+
+        <p>
+            @Html.DisplayFor(model => model.SalesDate)
+        </p>
+
+    </dl>
+</div>
+<p>
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("id", Model.ID)
+
+        @Html.ActionLink("<-", "Index", "PartModels", new object { }, new { @class = "btn btn-default" })
+    }
+
+  
+</p>

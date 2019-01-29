@@ -1,0 +1,90 @@
+﻿@model ClassicGarage.Models.CarModels
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <p>
+            <img src="@Url.Content(Model.Picture)" />
+        </p>
+        <b>
+            Imie
+        </b>
+        <p>
+            @Html.DisplayFor(model => model.Owner.FirstName)
+        </p>
+        <b>
+            Nazwisko
+        </b>
+        <p>
+            @Html.DisplayFor(model => model.Owner.LastName)
+        </p>
+        <b>
+            Marka
+        </b>
+        <p>
+            @Html.DisplayFor(model => model.Make)
+        </p>
+        <b>
+            Model
+        </b>
+        <p>
+            @Html.DisplayFor(model => model.Model)
+        </p>
+        <b>
+            Rok produkcji
+        </b>
+        <p>
+            @Html.DisplayFor(model => model.Year)
+        </p>
+        <b>
+            VIN
+        </b>
+        <p>
+            @Html.DisplayFor(model => model.VIN)
+        </p>
+
+
+        <b>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </b>
+        <p>
+            @Html.DisplayFor(model => model.PurchaseDate)
+        </p>
+        <b>
+            @Html.DisplayNameFor(model => model.PurchaseAmount)
+        </b>
+        <p>
+            @Html.DisplayFor(model => model.PurchaseAmount)
+        </p>
+        <b>
+            @Html.DisplayNameFor(model => model.SalesDate)
+        </b>
+        <p>
+            @Html.DisplayFor(model => model.SalesDate)
+        </p>
+        <b>
+            @Html.DisplayNameFor(model => model.SalesAmount)
+        </b>
+        <p>
+            @Html.DisplayFor(model => model.SalesAmount)
+        </p>
+    </dl>
+</div>
+
+<p>
+
+
+
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("id", Model.Id)
+        @Html.ActionLink("<-", "Index", "CarModels", new object { }, new { @class = "btn btn-default" })
+    }
+</p>
